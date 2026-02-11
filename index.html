@@ -212,14 +212,22 @@
     </footer>
 
     <script>
-        // --- KONFIGURACE HRY ---
+                // --- KONFIGURACE HRY ---
         const stages = [
             {
                 id: 1,
+                // Tento text musí být uložený v QR kódu, který vytiskneš a nalepíš na start
                 qrCode: "stanoviste-1", 
-                question: "Kolik soch je na Karlově mostě? (Napiš číslo)",
-                answer: "30",
-                nextLocation: { lat: 50.086385, lng: 14.413280 } 
+                
+                // Otázka, která se zobrazí na mobilu
+                question: "Kolik sloupů má chrámek Přátelství?", 
+                
+                // Správná odpověď (číslo nebo slovo)
+                answer: "6", 
+                
+                // Souřadnice DALŠÍHO místa (kam ho pošleš po splnění úkolu)
+                // Použil jsem souřadnice z kódu 79XR+29 Kroměříž (u řeky Moravy)
+                nextLocation: { lat: 49.302278, lng: 17.392611 } 
             },
             {
                 id: 2,
