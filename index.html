@@ -431,6 +431,34 @@
 
         function deg2rad(deg) { return deg * (Math.PI/180) }
         function rad2deg(rad) { return rad * (180/Math.PI) }
+        // --- NOVÁ FUNKCE: KONTROLA URL ADRESY ---
+        function checkUrlForCode() {
+            // Podívá se do adresy webu, jestli tam není "?kod=..."
+            const urlParams = new URLSearchParams(window.location.search);
+            const codeFromUrl = urlParams.get('kod');
+
+            if (codeFromUrl) {
+                // Pokud v adrese kód je, najdeme, kterému stanovišti patří
+                const foundIndex = stages.findIndex(stage => stage.qrCode === codeFromUrl);
+
+                if (foundIndex !== -1) {
+                    // Našli jsme stanoviště! Nastavíme hru na tento krok.
+                    currentStageIndex = foundIndex;
+                    
+                    // Rovnou zobrazíme úkol
+                    setupTask(stages[currentStageIndex]);
+                    
+                    // (Volitelné) Vyčistíme adresu, aby tam kód nestrašil
+                    window.history.replaceState({}, document.title, window.location.pathname);
+                } else {
+                    alert("Tento kód v odkazu neznám: " + codeFromUrl);
+                }
+            }
+        }
+
+        // Spustit tuto kontrolu hned, jak se stránka načte
+        window.onload = checkUrlForCode;
+
 
     </script>
 </body>
