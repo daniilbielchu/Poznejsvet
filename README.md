@@ -1,1 +1,1 @@
-# Poznejsvet
+# Člověče zastav se!
